@@ -670,6 +670,18 @@
 
     }
 
+    .timeline-date{
+
+      color:gold;
+
+      font-size:2.3rem;
+
+      font-family:'Cinzel',serif;
+
+      margin-top:20px;
+
+    }
+
     .timeline-card{
 
       background:rgba(255,255,255,.06);
@@ -748,6 +760,98 @@
       transform:
       translateY(-5px)
       scale(1.05);
+
+    }
+
+    /* FIREWORK BUTTON */
+
+    .fireworks-btn{
+
+      margin-top:50px;
+
+      padding:18px 42px;
+
+      border:none;
+
+      border-radius:50px;
+
+      background:
+      linear-gradient(
+      to right,
+      gold,
+      #fff4c8
+      );
+
+      color:#600000;
+
+      font-weight:700;
+
+      font-size:1rem;
+
+      cursor:pointer;
+
+      box-shadow:
+      0 0 25px rgba(255,215,0,.5);
+
+      transition:.4s;
+
+    }
+
+    .fireworks-btn:hover{
+
+      transform:scale(1.05);
+
+    }
+
+    /* FIREWORKS */
+
+    .fireworks-container{
+
+      position:fixed;
+      inset:0;
+
+      pointer-events:none;
+
+      overflow:hidden;
+
+      z-index:99999;
+
+    }
+
+    .firework{
+
+      position:absolute;
+
+      width:8px;
+      height:8px;
+
+      border-radius:50%;
+
+      animation:explode 1.5s ease-out forwards;
+
+    }
+
+    @keyframes explode{
+
+      0%{
+
+        transform:
+        translate(0,0)
+        scale(1);
+
+        opacity:1;
+
+      }
+
+      100%{
+
+        transform:
+        translate(var(--x),var(--y))
+        scale(0);
+
+        opacity:0;
+
+      }
 
     }
 
@@ -919,8 +1023,6 @@
     Two hearts, one soul, one beautiful journey ✨
   </p>
 
-  <!-- COUNTDOWN -->
-
   <div class="countdown">
 
     <div class="count-box">
@@ -957,10 +1059,7 @@
       Save The Date
     </h2>
 
-    <p style="
-    font-size:1.3rem;
-    line-height:2;
-    ">
+    <p style="font-size:1.3rem; line-height:2;">
 
       11 July 2026
       <br><br>
@@ -1033,6 +1132,12 @@
 
     <div class="timeline">
 
+      <!-- 10 JULY -->
+
+      <h3 class="timeline-date">
+        ✨ 10 July 2026 ✨
+      </h3>
+
       <div class="timeline-card">
 
         <h4>🌼 Mandap Ceremony</h4>
@@ -1048,7 +1153,8 @@
         <h4>💛 Haldi Ceremony</h4>
 
         <p>
-          A joyful celebration filled with turmeric, laughter and blessings.
+          A joyful celebration filled with turmeric,
+          laughter and blessings.
         </p>
 
       </div>
@@ -1058,17 +1164,23 @@
         <h4>🎶 Sangeet Night</h4>
 
         <p>
-          Music, dance, celebration and unforgettable family moments.
+          Music, dance, celebration and unforgettable moments.
         </p>
 
       </div>
+
+      <!-- 11 JULY -->
+
+      <h3 class="timeline-date">
+        ✨ 11 July 2026 ✨
+      </h3>
 
       <div class="timeline-card">
 
         <h4>🪔 Oli Ceremony</h4>
 
         <p>
-          Graceful traditional rituals with the bride adorned beautifully.
+          Graceful traditional rituals with blessings and happiness.
         </p>
 
       </div>
@@ -1078,7 +1190,7 @@
         <h4>🌸 Faldan Ceremony</h4>
 
         <p>
-          Families gathering together with blessings, gifts and happiness.
+          Families gathering together with gifts and celebrations.
         </p>
 
       </div>
@@ -1199,6 +1311,16 @@
 
     </a>
 
+    <!-- FIREWORKS BUTTON -->
+
+    <button
+    class="fireworks-btn"
+    onclick="startFireworks()">
+
+      🎆 Celebrate With Us 🎆
+
+    </button>
+
   </div>
 
 </section>
@@ -1218,6 +1340,12 @@
 </footer>
 
 </main>
+
+<!-- FIREWORKS -->
+
+<div
+class="fireworks-container"
+id="fireworksContainer"></div>
 
 <script>
 
@@ -1376,6 +1504,97 @@ setInterval(()=>{
   .innerText=seconds;
 
 },1000);
+
+/* FIREWORKS */
+
+/* CONTINUOUS FIREWORKS */
+
+let fireworksInterval;
+
+function startFireworks(){
+
+  const container =
+  document.getElementById(
+  "fireworksContainer"
+  );
+
+  /* prevent multiple intervals */
+
+  clearInterval(fireworksInterval);
+
+  /* burst immediately */
+
+  for(let i=0;i<8;i++){
+
+    createExplosion(container);
+
+  }
+
+  /* continue bursting */
+
+  fireworksInterval = setInterval(()=>{
+
+    for(let i=0;i<6;i++){
+
+      createExplosion(container);
+
+    }
+
+  },700);
+
+  /* auto stop after 12 seconds */
+
+  setTimeout(()=>{
+
+    clearInterval(fireworksInterval);
+
+  },12000);
+
+}
+
+function createExplosion(container){
+
+  const x=
+  Math.random()*window.innerWidth;
+
+  const y=
+  Math.random()*window.innerHeight;
+
+  for(let i=0;i<40;i++){
+
+    const particle=
+    document.createElement("div");
+
+    particle.classList.add("firework");
+
+    particle.style.left=x+"px";
+    particle.style.top=y+"px";
+
+    particle.style.background=
+    `hsl(${Math.random()*360},
+    100%,60%)`;
+
+    particle.style.setProperty(
+    "--x",
+    `${(Math.random()-0.5)*300}px`
+    );
+
+    particle.style.setProperty(
+    "--y",
+    `${(Math.random()-0.5)*300}px`
+    );
+
+    container.appendChild(particle);
+
+    setTimeout(()=>{
+
+      particle.remove();
+
+    },1500);
+
+  }
+
+}
 
 </script>
 
