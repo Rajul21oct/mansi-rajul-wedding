@@ -21,9 +21,9 @@
 
     :root{
       --gold:#ffd700;
-      --red:#7b0000;
-      --cream:#fff5ea;
-      --pink:#ffd8ea;
+      --red:#7a0000;
+      --pink:#ffdde8;
+      --cream:#fff5e8;
     }
 
     body{
@@ -33,8 +33,12 @@
       background:black;
     }
 
+    /* BACKGROUND */
+
     body::before{
+
       content:"";
+
       position:fixed;
       inset:0;
 
@@ -44,7 +48,7 @@
       rgba(20,0,0,.7)
       ),
 
-      url('https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1974&auto=format&fit=crop')
+      url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1974&auto=format&fit=crop')
       center/cover;
 
       animation:bgZoom 25s infinite alternate ease-in-out;
@@ -53,20 +57,26 @@
     }
 
     @keyframes bgZoom{
+
       from{
         transform:scale(1);
       }
+
       to{
         transform:scale(1.08);
       }
+
     }
 
     /* PRELOADER */
 
     #preloader{
+
       position:fixed;
       inset:0;
+
       background:black;
+
       z-index:99999;
 
       display:flex;
@@ -75,11 +85,15 @@
       justify-content:center;
 
       color:gold;
+
       font-family:'Cinzel',serif;
+
       letter-spacing:4px;
+
     }
 
     .loader-ring{
+
       width:90px;
       height:90px;
 
@@ -91,27 +105,38 @@
       animation:spin 1s linear infinite;
 
       margin-bottom:20px;
+
     }
 
     @keyframes spin{
+
       to{
         transform:rotate(360deg);
       }
+
     }
 
-    /* CURTAIN */
+    /* CURTAINS */
 
     .curtain-container{
+
       position:fixed;
       inset:0;
+
       z-index:9999;
+
       overflow:hidden;
+
       background:black;
+
     }
 
     .curtain{
+
       position:absolute;
+
       top:0;
+
       width:50%;
       height:100%;
 
@@ -119,14 +144,15 @@
       linear-gradient(
       to right,
       #3a0000,
-      #990000,
-      #420000
+      #a10000,
+      #500000
       );
 
       transition:3s ease-in-out;
 
       box-shadow:
       inset 0 0 90px rgba(0,0,0,.8);
+
     }
 
     .curtain.left{
@@ -147,7 +173,10 @@
       transform:translateX(100%);
     }
 
+    /* INTRO */
+
     .intro-text{
+
       position:absolute;
       inset:0;
 
@@ -157,11 +186,15 @@
       justify-content:center;
 
       text-align:center;
+
       padding:20px;
+
     }
 
     .intro-text h1{
+
       font-family:'Great Vibes',cursive;
+
       font-size:5rem;
 
       color:gold;
@@ -172,22 +205,31 @@
       0 0 80px orange;
 
       animation:floatText 4s infinite ease-in-out;
+
     }
 
     @keyframes floatText{
+
       50%{
         transform:translateY(-10px);
       }
+
     }
 
     .intro-text p{
+
       margin-top:20px;
+
       max-width:700px;
+
       line-height:2;
+
       font-size:1.2rem;
+
     }
 
     .open-btn{
+
       margin-top:35px;
 
       padding:16px 42px;
@@ -205,22 +247,28 @@
       color:#5a0000;
 
       font-weight:700;
+
       cursor:pointer;
 
       box-shadow:
       0 0 30px rgba(255,215,0,.7);
 
       transition:.4s;
+
     }
 
     .open-btn:hover{
+
       transform:scale(1.08);
+
     }
 
     /* LOGO */
 
     .logo{
+
       position:fixed;
+
       top:20px;
       left:20px;
 
@@ -240,84 +288,89 @@
       backdrop-filter:blur(10px);
 
       font-family:'Great Vibes',cursive;
+
       font-size:1.6rem;
 
       color:gold;
 
       z-index:999;
+
     }
 
-    /* MUSIC */
-
-    .music-btn{
-      position:fixed;
-      top:20px;
-      right:20px;
-
-      width:60px;
-      height:60px;
-
-      border:none;
-      border-radius:50%;
-
-      cursor:pointer;
-
-      background:rgba(255,255,255,.08);
-
-      backdrop-filter:blur(10px);
-
-      color:white;
-      font-size:1.3rem;
-
-      border:1px solid gold;
-
-      z-index:999;
-    }
-
-    /* PETALS */
+    /* ROSE PETALS */
 
     .petals{
+
       position:fixed;
       inset:0;
-      pointer-events:none;
+
       overflow:hidden;
+
+      pointer-events:none;
+
       z-index:2;
+
     }
 
     .petal{
+
       position:absolute;
 
-      width:14px;
-      height:14px;
+      width:18px;
+      height:18px;
 
       background:
-      radial-gradient(circle,#ffd6e5,#ff7ba5);
+      radial-gradient(circle,
+      #ff8fb1,
+      #ff3d6e);
 
-      border-radius:50% 0 50% 0;
+      border-radius:
+      50% 0 50% 0;
+
+      opacity:.8;
 
       animation:fall linear infinite;
+
+      box-shadow:
+      0 0 15px rgba(255,80,120,.5);
+
     }
 
     @keyframes fall{
+
       from{
-        transform:translateY(-10vh) rotate(0deg);
+
+        transform:
+        translateY(-10vh)
+        rotate(0deg);
+
       }
 
       to{
-        transform:translateY(110vh) rotate(360deg);
+
+        transform:
+        translateY(110vh)
+        rotate(360deg);
+
       }
+
     }
 
     /* PARTICLES */
 
     .particles{
+
       position:fixed;
       inset:0;
+
       pointer-events:none;
+
       z-index:1;
+
     }
 
     .particle{
+
       position:absolute;
 
       width:4px;
@@ -330,21 +383,27 @@
       box-shadow:0 0 20px white;
 
       animation:particleFloat 5s infinite alternate;
+
     }
 
     @keyframes particleFloat{
+
       to{
+
         transform:
         translateY(-40px)
-        scale(1.6);
+        scale(1.5);
 
         opacity:.2;
+
       }
+
     }
 
     /* GLOW */
 
     .glow-orb{
+
       position:fixed;
 
       width:240px;
@@ -353,15 +412,19 @@
       border-radius:50%;
 
       background:
-      radial-gradient(circle,
+      radial-gradient(
+      circle,
       rgba(255,215,0,.35),
-      transparent);
+      transparent
+      );
 
       filter:blur(30px);
 
-      animation:orbMove 15s infinite alternate ease-in-out;
+      animation:
+      orbMove 15s infinite alternate ease-in-out;
 
       z-index:-1;
+
     }
 
     .glow-orb.one{
@@ -376,12 +439,16 @@
     }
 
     @keyframes orbMove{
+
       to{
+
         transform:
         translateY(-40px)
         translateX(40px)
         scale(1.2);
+
       }
+
     }
 
     /* MAIN */
@@ -392,6 +459,7 @@
     }
 
     section{
+
       min-height:100vh;
 
       display:flex;
@@ -402,12 +470,15 @@
       padding:100px 20px;
 
       text-align:center;
+
     }
 
     /* HERO */
 
     .hero h2{
+
       font-family:'Great Vibes',cursive;
+
       font-size:7rem;
 
       color:gold;
@@ -419,32 +490,44 @@
 
       animation:
       heroFloat 4s infinite ease-in-out;
+
     }
 
     @keyframes heroFloat{
+
       50%{
         transform:translateY(-15px);
       }
+
     }
 
     .hero p{
+
       margin-top:25px;
+
       font-size:1.4rem;
+
       max-width:800px;
+
     }
 
     /* COUNTDOWN */
 
     .countdown{
+
       margin-top:50px;
 
       display:flex;
       flex-wrap:wrap;
+
       justify-content:center;
+
       gap:20px;
+
     }
 
     .count-box{
+
       width:120px;
       height:120px;
 
@@ -463,16 +546,21 @@
 
       box-shadow:
       0 0 30px rgba(255,215,0,.2);
+
     }
 
     .count-box h3{
+
       color:gold;
+
       font-size:2.3rem;
+
     }
 
     /* CARD */
 
     .card{
+
       width:min(1000px,100%);
 
       background:rgba(255,255,255,.08);
@@ -489,37 +577,56 @@
       0 0 40px rgba(255,215,0,.15);
 
       animation:fadeUp 1s ease;
+
     }
 
     @keyframes fadeUp{
+
       from{
+
         transform:translateY(50px);
+
         opacity:0;
+
       }
 
       to{
+
         transform:translateY(0);
+
         opacity:1;
+
       }
+
     }
 
     .section-title{
+
       font-family:'Cinzel',serif;
+
       font-size:3rem;
+
       color:gold;
+
       margin-bottom:35px;
+
     }
 
     /* FAMILY */
 
     .family-grid{
+
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(260px,1fr));
 
       gap:30px;
+
     }
 
     .family-member{
+
       padding:35px;
 
       border-radius:25px;
@@ -529,28 +636,42 @@
       border:1px solid rgba(255,215,0,.25);
 
       transition:.5s;
+
     }
 
     .family-member:hover{
+
       transform:translateY(-10px);
-      box-shadow:0 0 35px rgba(255,215,0,.2);
+
+      box-shadow:
+      0 0 35px rgba(255,215,0,.2);
+
     }
 
     .family-member h3{
+
       font-family:'Great Vibes',cursive;
+
       font-size:2.5rem;
+
       color:gold;
+
       margin-bottom:15px;
+
     }
 
     /* TIMELINE */
 
     .timeline{
+
       display:grid;
+
       gap:35px;
+
     }
 
     .timeline-card{
+
       background:rgba(255,255,255,.06);
 
       border-left:5px solid gold;
@@ -560,39 +681,40 @@
       padding:30px;
 
       transition:.5s;
+
     }
 
     .timeline-card:hover{
+
       transform:scale(1.02);
-      box-shadow:0 0 40px rgba(255,215,0,.2);
-    }
-
-    .timeline-card img{
-      width:100%;
-      max-width:320px;
-
-      border-radius:25px;
-
-      margin-bottom:20px;
 
       box-shadow:
-      0 0 30px rgba(255,215,0,.25);
+      0 0 40px rgba(255,215,0,.2);
+
     }
 
     .timeline-card h4{
+
       color:gold;
+
       font-size:1.7rem;
+
       margin-bottom:15px;
+
     }
 
     .timeline-card p{
+
       line-height:2;
+
       font-size:1.1rem;
+
     }
 
     /* BUTTON */
 
     .btn{
+
       display:inline-block;
 
       margin-top:30px;
@@ -618,17 +740,21 @@
 
       box-shadow:
       0 0 25px rgba(255,215,0,.5);
+
     }
 
     .btn:hover{
+
       transform:
       translateY(-5px)
       scale(1.05);
+
     }
 
     /* SPARKLE */
 
     .sparkle{
+
       position:fixed;
 
       width:6px;
@@ -641,31 +767,47 @@
       box-shadow:0 0 20px white;
 
       animation:sparkle 3s infinite;
+
     }
 
     @keyframes sparkle{
+
       50%{
+
         transform:scale(2);
+
         opacity:.2;
+
       }
+
     }
 
     /* FOOTER */
 
     footer{
+
       padding:100px 20px;
+
       text-align:center;
+
     }
 
     footer h2{
+
       font-family:'Great Vibes',cursive;
+
       font-size:4rem;
+
       color:gold;
+
       margin-bottom:20px;
+
     }
 
     footer p{
+
       font-size:1.3rem;
+
     }
 
     /* MOBILE */
@@ -721,20 +863,6 @@
   M ❤️ R
 </div>
 
-<!-- MUSIC -->
-
-<button class="music-btn" id="musicBtn">
-  🔊
-</button>
-
-<audio id="bgMusic" loop>
-
-  <source
-  src="https://cdn.pixabay.com/download/audio/2022/11/22/audio_3e4b72f0d2.mp3?filename=indian-wedding-126471.mp3"
-  type="audio/mp3">
-
-</audio>
-
 <!-- PETALS -->
 
 <div class="petals" id="petals"></div>
@@ -760,13 +888,17 @@
     <h1>Mansi & Rajul</h1>
 
     <p>
+
       Together with their families,
       invite you to celebrate
-      the beginning of their forever journey
+      the beginning of their forever journey ❤️
+
     </p>
 
     <button class="open-btn" onclick="openInvitation()">
+
       Open Invitation
+
     </button>
 
   </div>
@@ -784,7 +916,7 @@
   <h2>Mansi ❤️ Rajul</h2>
 
   <p>
-    Two hearts, one soul, one beautiful journey ❤️
+    Two hearts, one soul, one beautiful journey ✨
   </p>
 
   <!-- COUNTDOWN -->
@@ -858,9 +990,12 @@
         <h3>Mansi</h3>
 
         <p>
+
           Daughter of
           <br>
+
           Mrs. Manisha & Mr. Arvind
+
         </p>
 
       </div>
@@ -870,9 +1005,12 @@
         <h3>Rajul</h3>
 
         <p>
+
           Son of
           <br>
+
           Mrs. Alka & Mr. Balkrishna
+
         </p>
 
       </div>
@@ -895,12 +1033,7 @@
 
     <div class="timeline">
 
-      <!-- MANDAP -->
-
       <div class="timeline-card">
-
-        <img
-        src="https://media.tenor.com/4Gqj0K8w0JUAAAAC/indian-wedding.gif">
 
         <h4>🌼 Mandap Ceremony</h4>
 
@@ -910,12 +1043,7 @@
 
       </div>
 
-      <!-- HALDI -->
-
       <div class="timeline-card">
-
-        <img
-        src="https://media.tenor.com/yLQ4VjM0m7YAAAAC/haldi-indian-wedding.gif">
 
         <h4>💛 Haldi Ceremony</h4>
 
@@ -925,12 +1053,7 @@
 
       </div>
 
-      <!-- SANGEET -->
-
       <div class="timeline-card">
-
-        <img
-        src="https://media.tenor.com/qR4k0M7dS5gAAAAC/indian-dance-sangeet.gif">
 
         <h4>🎶 Sangeet Night</h4>
 
@@ -940,12 +1063,7 @@
 
       </div>
 
-      <!-- OLI -->
-
       <div class="timeline-card">
-
-        <img
-        src="https://media.tenor.com/9lQaK6h6f3QAAAAC/indian-bride.gif">
 
         <h4>🪔 Oli Ceremony</h4>
 
@@ -955,12 +1073,7 @@
 
       </div>
 
-      <!-- FALDAN -->
-
       <div class="timeline-card">
-
-        <img
-        src="https://media.tenor.com/NkK8dL4W8T8AAAAC/indian-family-wedding.gif">
 
         <h4>🌸 Faldan Ceremony</h4>
 
@@ -970,12 +1083,7 @@
 
       </div>
 
-      <!-- ENGAGEMENT -->
-
       <div class="timeline-card">
-
-        <img
-        src="https://media.tenor.com/0v4o5mB4x4AAAAAC/engagement-ring.gif">
 
         <h4>💍 Engagement Ceremony</h4>
 
@@ -985,12 +1093,7 @@
 
       </div>
 
-      <!-- WEDDING -->
-
       <div class="timeline-card">
-
-        <img
-        src="https://media.tenor.com/YuD7A8s8Q6AAAAAC/indian-marriage.gif">
 
         <h4>❤️ Wedding Ceremony</h4>
 
@@ -1030,6 +1133,7 @@
 
     <a
     class="btn"
+
     target="_blank"
 
     href="https://maps.google.com/?q=Hotel+Ram+Saroj+Tilakgunj+Sagar">
@@ -1079,7 +1183,9 @@
     </h2>
 
     <p style="font-size:1.2rem;">
+
       Your presence will make our celebration complete ❤️
+
     </p>
 
     <a
@@ -1129,17 +1235,13 @@ window.addEventListener("load",()=>{
 
 });
 
-/* OPEN INVITATION */
+/* OPEN CURTAINS */
 
 function openInvitation(){
 
   document
   .getElementById("curtainContainer")
   .classList.add("open");
-
-  document
-  .getElementById("bgMusic")
-  .play();
 
   setTimeout(()=>{
 
@@ -1151,12 +1253,12 @@ function openInvitation(){
 
 }
 
-/* PETALS */
+/* ROSE PETALS */
 
 const petalsContainer=
 document.getElementById("petals");
 
-for(let i=0;i<60;i++){
+for(let i=0;i<80;i++){
 
   let petal=
   document.createElement("div");
@@ -1274,32 +1376,6 @@ setInterval(()=>{
   .innerText=seconds;
 
 },1000);
-
-/* MUSIC BUTTON */
-
-const music=
-document.getElementById("bgMusic");
-
-const musicBtn=
-document.getElementById("musicBtn");
-
-musicBtn.addEventListener("click",()=>{
-
-  if(music.paused){
-
-    music.play();
-
-    musicBtn.innerHTML="🔊";
-
-  }else{
-
-    music.pause();
-
-    musicBtn.innerHTML="🔇";
-
-  }
-
-});
 
 </script>
 
