@@ -1,898 +1,4 @@
-```html
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Mansi ❤️ Rajul | Royal Wedding Invitation</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      scroll-behavior:smooth;
-    }
-
-    :root{
-      --gold:#ffd700;
-      --darkGold:#ffb700;
-      --red:#7a0000;
-      --cream:#fff6ea;
-      --pink:#ffd5e5;
-    }
-
-    body{
-      font-family:'Poppins',sans-serif;
-      overflow-x:hidden;
-      color:white;
-      background:black;
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-
-      background:
-      linear-gradient(
-      rgba(0,0,0,.45),
-      rgba(20,0,0,.65)
-      ),
-
-      url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2000&auto=format&fit=crop')
-      center/cover;
-
-      animation:zoomBg 25s infinite alternate ease-in-out;
-
-      z-index:-5;
-    }
-
-    @keyframes zoomBg{
-      from{
-        transform:scale(1);
-      }
-      to{
-        transform:scale(1.08);
-      }
-    }
-
-    /* PRELOADER */
-
-    #preloader{
-      position:fixed;
-      inset:0;
-      background:black;
-      z-index:99999;
-
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-
-      color:gold;
-      font-family:'Cinzel',serif;
-      letter-spacing:4px;
-    }
-
-    .loader-ring{
-      width:90px;
-      height:90px;
-
-      border:3px solid rgba(255,255,255,.1);
-      border-top:3px solid gold;
-
-      border-radius:50%;
-
-      animation:spin 1s linear infinite;
-
-      margin-bottom:20px;
-    }
-
-    @keyframes spin{
-      to{
-        transform:rotate(360deg);
-      }
-    }
-
-    /* CURTAINS */
-
-    .curtain-container{
-      position:fixed;
-      inset:0;
-      z-index:9999;
-      overflow:hidden;
-      background:black;
-    }
-
-    .curtain{
-      position:absolute;
-      top:0;
-      width:50%;
-      height:100%;
-
-      background:
-      linear-gradient(
-      to right,
-      #3a0000,
-      #a10000,
-      #500000
-      );
-
-      transition:3s ease-in-out;
-
-      box-shadow:
-      inset 0 0 80px rgba(0,0,0,.8);
-    }
-
-    .curtain.left{
-      left:0;
-      border-right:4px solid gold;
-    }
-
-    .curtain.right{
-      right:0;
-      border-left:4px solid gold;
-    }
-
-    .open .left{
-      transform:translateX(-100%);
-    }
-
-    .open .right{
-      transform:translateX(100%);
-    }
-
-    .intro-text{
-      position:absolute;
-      inset:0;
-
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-
-      text-align:center;
-      padding:20px;
-
-      z-index:5;
-    }
-
-    .intro-text h1{
-      font-family:'Great Vibes',cursive;
-      font-size:5rem;
-
-      color:gold;
-
-      text-shadow:
-      0 0 15px white,
-      0 0 30px gold,
-      0 0 60px orange;
-
-      animation:floatName 4s infinite ease-in-out;
-    }
-
-    @keyframes floatName{
-      50%{
-        transform:translateY(-12px);
-      }
-    }
-
-    .intro-text p{
-      max-width:700px;
-      margin-top:20px;
-      line-height:2;
-      font-size:1.2rem;
-    }
-
-    .open-btn{
-      margin-top:35px;
-
-      padding:16px 42px;
-
-      border:none;
-      border-radius:50px;
-
-      background:
-      linear-gradient(
-      to right,
-      gold,
-      #fff4c8
-      );
-
-      color:#560000;
-
-      font-weight:700;
-
-      cursor:pointer;
-
-      box-shadow:
-      0 0 30px rgba(255,215,0,.7);
-
-      transition:.4s;
-    }
-
-    .open-btn:hover{
-      transform:scale(1.08);
-    }
-
-    /* MUSIC BUTTON */
-
-    .music-btn{
-      position:fixed;
-      top:20px;
-      right:20px;
-
-      width:60px;
-      height:60px;
-
-      border-radius:50%;
-      border:none;
-
-      cursor:pointer;
-
-      z-index:999;
-
-      background:rgba(255,255,255,.1);
-
-      backdrop-filter:blur(10px);
-
-      color:white;
-      font-size:1.3rem;
-
-      border:1px solid gold;
-    }
-
-    /* LOGO */
-
-    .logo{
-      position:fixed;
-      top:20px;
-      left:20px;
-
-      width:75px;
-      height:75px;
-
-      border-radius:50%;
-
-      border:1px solid gold;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      background:rgba(255,255,255,.05);
-
-      backdrop-filter:blur(8px);
-
-      font-family:'Great Vibes',cursive;
-      font-size:1.6rem;
-
-      color:gold;
-
-      z-index:999;
-    }
-
-    /* PETALS */
-
-    .petals{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      overflow:hidden;
-      z-index:2;
-    }
-
-    .petal{
-      position:absolute;
-      width:14px;
-      height:14px;
-
-      background:
-      radial-gradient(circle,#ffd6e5,#ff7aa5);
-
-      border-radius:50% 0 50% 0;
-
-      animation:fall linear infinite;
-    }
-
-    @keyframes fall{
-      from{
-        transform:translateY(-10vh) rotate(0deg);
-      }
-
-      to{
-        transform:translateY(110vh) rotate(360deg);
-      }
-    }
-
-    /* PARTICLES */
-
-    .particles{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:1;
-    }
-
-    .particle{
-      position:absolute;
-      width:4px;
-      height:4px;
-
-      background:white;
-
-      border-radius:50%;
-
-      box-shadow:0 0 20px white;
-
-      animation:particleFloat 5s infinite alternate;
-    }
-
-    @keyframes particleFloat{
-      to{
-        transform:
-        translateY(-40px)
-        scale(1.5);
-
-        opacity:.2;
-      }
-    }
-
-    /* GLOW ORBS */
-
-    .glow-orb{
-      position:fixed;
-
-      width:220px;
-      height:220px;
-
-      border-radius:50%;
-
-      background:
-      radial-gradient(circle,
-      rgba(255,215,0,.35),
-      transparent);
-
-      filter:blur(25px);
-
-      z-index:-1;
-
-      animation:orbMove 15s infinite alternate ease-in-out;
-    }
-
-    .glow-orb.one{
-      top:10%;
-      left:5%;
-    }
-
-    .glow-orb.two{
-      bottom:10%;
-      right:5%;
-      animation-delay:4s;
-    }
-
-    @keyframes orbMove{
-      to{
-        transform:
-        translateY(-50px)
-        translateX(30px)
-        scale(1.2);
-      }
-    }
-
-    /* MAIN */
-
-    main{
-      position:relative;
-      z-index:3;
-    }
-
-    section{
-      min-height:100vh;
-
-      padding:100px 20px;
-
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-
-      text-align:center;
-    }
-
-    /* HERO */
-
-    .hero h2{
-      font-family:'Great Vibes',cursive;
-      font-size:7rem;
-
-      color:gold;
-
-      text-shadow:
-      0 0 15px white,
-      0 0 35px gold,
-      0 0 60px orange;
-
-      animation:
-      glow 3s infinite alternate,
-      heroFloat 4s infinite ease-in-out;
-    }
-
-    @keyframes glow{
-      to{
-        text-shadow:
-        0 0 20px white,
-        0 0 60px gold,
-        0 0 90px orange;
-      }
-    }
-
-    @keyframes heroFloat{
-      50%{
-        transform:translateY(-15px);
-      }
-    }
-
-    .hero p{
-      margin-top:25px;
-      font-size:1.4rem;
-      max-width:800px;
-    }
-
-    /* COUNTDOWN */
-
-    .countdown{
-      margin-top:50px;
-
-      display:flex;
-      flex-wrap:wrap;
-      gap:20px;
-
-      justify-content:center;
-    }
-
-    .count-box{
-      width:120px;
-      height:120px;
-
-      border-radius:25px;
-
-      background:rgba(255,255,255,.08);
-
-      backdrop-filter:blur(12px);
-
-      border:1px solid rgba(255,215,0,.4);
-
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-
-      box-shadow:
-      0 0 30px rgba(255,215,0,.2);
-    }
-
-    .count-box h3{
-      font-size:2.2rem;
-      color:gold;
-    }
-
-    /* CARDS */
-
-    .card{
-      width:min(950px,100%);
-
-      background:rgba(255,255,255,.08);
-
-      border:1px solid rgba(255,215,0,.3);
-
-      border-radius:35px;
-
-      padding:50px;
-
-      backdrop-filter:blur(12px);
-
-      box-shadow:
-      0 0 40px rgba(255,215,0,.15);
-
-      animation:fadeUp 1.2s ease;
-    }
-
-    @keyframes fadeUp{
-      from{
-        transform:translateY(50px);
-        opacity:0;
-      }
-
-      to{
-        transform:translateY(0);
-        opacity:1;
-      }
-    }
-
-    .section-title{
-      font-family:'Cinzel',serif;
-
-      font-size:3rem;
-
-      color:gold;
-
-      margin-bottom:30px;
-    }
-
-    /* FAMILY */
-
-    .family-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-
-      gap:30px;
-      margin-top:30px;
-    }
-
-    .family-member{
-      padding:35px;
-
-      border-radius:25px;
-
-      background:rgba(255,255,255,.06);
-
-      border:1px solid rgba(255,215,0,.3);
-
-      transition:.5s;
-    }
-
-    .family-member:hover{
-      transform:translateY(-10px);
-      box-shadow:0 0 30px rgba(255,215,0,.2);
-    }
-
-    .family-member h3{
-      font-family:'Great Vibes',cursive;
-      font-size:2.5rem;
-      color:gold;
-      margin-bottom:15px;
-    }
-
-    /* TIMELINE */
-
-    .timeline{
-      display:grid;
-      gap:30px;
-    }
-
-    .timeline-card{
-      background:rgba(255,255,255,.06);
-
-      border-left:5px solid gold;
-
-      padding:30px;
-
-      border-radius:25px;
-
-      transition:.5s;
-    }
-
-    .timeline-card:hover{
-      transform:scale(1.03);
-      box-shadow:0 0 35px rgba(255,215,0,.2);
-    }
-
-    .timeline-card img{
-      width:90px;
-      margin-bottom:15px;
-    }
-
-    .timeline-card h4{
-      color:gold;
-      margin-bottom:15px;
-      font-size:1.6rem;
-    }
-
-    .timeline-card p{
-      line-height:2;
-      font-size:1.1rem;
-    }
-
-    /* BUTTONS */
-
-    .btn{
-      display:inline-block;
-
-      margin-top:30px;
-
-      padding:16px 36px;
-
-      border-radius:50px;
-
-      text-decoration:none;
-
-      background:
-      linear-gradient(
-      to right,
-      gold,
-      #fff5cc
-      );
-
-      color:#5a0000;
-
-      font-weight:700;
-
-      transition:.4s;
-
-      box-shadow:
-      0 0 25px rgba(255,215,0,.5);
-    }
-
-    .btn:hover{
-      transform:
-      translateY(-5px)
-      scale(1.05);
-    }
-
-    /* SPARKLES */
-
-    .sparkle{
-      position:fixed;
-
-      width:6px;
-      height:6px;
-
-      border-radius:50%;
-
-      background:white;
-
-      box-shadow:0 0 20px white;
-
-      animation:sparkleAnim 3s infinite;
-    }
-
-    @keyframes sparkleAnim{
-      50%{
-        transform:scale(2);
-        opacity:.2;
-      }
-    }
-
-    /* FOOTER */
-
-    footer{
-      padding:100px 20px;
-      text-align:center;
-    }
-
-    footer h2{
-      font-family:'Great Vibes',cursive;
-      font-size:4rem;
-      color:gold;
-      margin-bottom:20px;
-    }
-
-    footer p{
-      font-size:1.3rem;
-    }
-
-    /* MOBILE */
-
-    @media(max-width:768px){
-
-      .hero h2{
-        font-size:4.5rem;
-      }
-
-      .intro-text h1{
-        font-size:3.5rem;
-      }
-
-      .section-title{
-        font-size:2.2rem;
-      }
-
-      .count-box{
-        width:90px;
-        height:90px;
-      }
-
-      .count-box h3{
-        font-size:1.5rem;
-      }
-
-      .card{
-        padding:30px;
-      }
-
-    }
-
-  </style>
-
-</head>
-
-<body>
-
-<!-- PRELOADER -->
-
-<div id="preloader">
-
-  <div class="loader-ring"></div>
-
-  <h2>Loading Celebration...</h2>
-
-</div>
-
-<!-- LOGO -->
-
-<div class="logo">
-  M ❤️ R
-</div>
-
-<!-- MUSIC BUTTON -->
-
-<button class="music-btn" id="musicBtn">
-  🔊
-</button>
-
-<!-- MUSIC -->
-
-<audio id="bgMusic" loop>
-
-  <source
-  src="https://cdn.pixabay.com/download/audio/2022/11/22/audio_3e4b72f0d2.mp3?filename=indian-wedding-126471.mp3"
-  type="audio/mp3">
-
-</audio>
-
-<!-- PETALS -->
-
-<div class="petals" id="petals"></div>
-
-<!-- PARTICLES -->
-
-<div class="particles" id="particles"></div>
-
-<!-- GLOW -->
-
-<div class="glow-orb one"></div>
-<div class="glow-orb two"></div>
-
-<!-- CURTAINS -->
-
-<div class="curtain-container" id="curtainContainer">
-
-  <div class="curtain left"></div>
-  <div class="curtain right"></div>
-
-  <div class="intro-text">
-
-    <h1>Mansi & Rajul</h1>
-
-    <p>
-      Together with their families,
-      invite you to celebrate
-      the beginning of their forever journey
-    </p>
-
-    <button class="open-btn" onclick="openInvitation()">
-      Open Invitation
-    </button>
-
-  </div>
-
-</div>
-
-<!-- MAIN -->
-
-<main>
-
-<!-- HERO -->
-
-<section class="hero">
-
-  <h2>Mansi ❤️ Rajul</h2>
-
-  <p>
-    Two hearts, one soul, one beautiful journey
-  </p>
-
-  <!-- COUNTDOWN -->
-
-  <div class="countdown">
-
-    <div class="count-box">
-      <h3 id="days">00</h3>
-      <span>Days</span>
-    </div>
-
-    <div class="count-box">
-      <h3 id="hours">00</h3>
-      <span>Hours</span>
-    </div>
-
-    <div class="count-box">
-      <h3 id="minutes">00</h3>
-      <span>Minutes</span>
-    </div>
-
-    <div class="count-box">
-      <h3 id="seconds">00</h3>
-      <span>Seconds</span>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- SAVE DATE -->
-
-<section>
-
-  <div class="card">
-
-    <h2 class="section-title">
-      Save The Date
-    </h2>
-
-    <p style="font-size:1.3rem; line-height:2;">
-
-      11 July 2026
-      <br><br>
-
-      A magical beginning of forever awaits ✨
-
-    </p>
-
-  </div>
-
-</section>
-
-<!-- FAMILY -->
-
-<section>
-
-  <div class="card">
-
-    <h2 class="section-title">
-      Families
-    </h2>
-
-    <div class="family-grid">
-
-      <div class="family-member">
-
-        <h3>Mansi</h3>
-
-        <p>
-          Daughter of
-          <br>
-          Mrs. Manisha & Mr. Arvind
-        </p>
-
-      </div>
-
-      <div class="family-member">
-
-        <h3>Rajul</h3>
-
-        <p>
-          Son of
-          <br>
-          Mrs. Alka & Mr. Balkrishna
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- FUNCTIONS -->
+<!-- REPLACE YOUR ENTIRE TIMELINE SECTION WITH THIS -->
 
 <section>
 
@@ -904,33 +10,156 @@
 
     <div class="timeline">
 
+      <!-- MANDAP -->
+
       <div class="timeline-card">
 
         <img
-        src="https://media.tenor.com/2roX3uxz_68AAAAi/indian-wedding.gif">
+        src="https://media.tenor.com/4Gqj0K8w0JUAAAAC/indian-wedding.gif"
+        style="
+        width:100%;
+        max-width:280px;
+        border-radius:20px;
+        margin-bottom:20px;
+        box-shadow:0 0 25px rgba(255,215,0,.3);
+        ">
 
-        <h4>10 July 2026</h4>
+        <h4>🌼 Mandap Ceremony</h4>
 
         <p>
-          🌼 Mandap Ceremony<br>
-          💛 Haldi Ceremony<br>
-          🎶 Sangeet Night
+          Traditional sacred rituals beneath the divine mandap.
         </p>
 
       </div>
 
+      <!-- HALDI -->
+
       <div class="timeline-card">
 
         <img
-        src="https://media.tenor.com/2roX3uxz_68AAAAi/indian-wedding.gif">
+        src="https://media.tenor.com/yLQ4VjM0m7YAAAAC/haldi-indian-wedding.gif"
+        style="
+        width:100%;
+        max-width:280px;
+        border-radius:20px;
+        margin-bottom:20px;
+        box-shadow:0 0 25px rgba(255,215,0,.3);
+        ">
 
-        <h4>11 July 2026</h4>
+        <h4>💛 Haldi Ceremony</h4>
 
         <p>
-          🪔 Oli Ceremony<br>
-          🌸 Faldan Ceremony<br>
-          💍 Engagement Ceremony<br>
-          ❤️ Wedding Ceremony
+          A joyful celebration filled with turmeric, laughter and blessings.
+        </p>
+
+      </div>
+
+      <!-- SANGEET -->
+
+      <div class="timeline-card">
+
+        <img
+        src="https://media.tenor.com/qR4k0M7dS5gAAAAC/indian-dance-sangeet.gif"
+        style="
+        width:100%;
+        max-width:280px;
+        border-radius:20px;
+        margin-bottom:20px;
+        box-shadow:0 0 25px rgba(255,215,0,.3);
+        ">
+
+        <h4>🎶 Sangeet Night</h4>
+
+        <p>
+          Music, dance, celebration and unforgettable family moments.
+        </p>
+
+      </div>
+
+      <!-- OLI -->
+
+      <div class="timeline-card">
+
+        <img
+        src="https://media.tenor.com/9lQaK6h6f3QAAAAC/indian-bride.gif"
+        style="
+        width:100%;
+        max-width:280px;
+        border-radius:20px;
+        margin-bottom:20px;
+        box-shadow:0 0 25px rgba(255,215,0,.3);
+        ">
+
+        <h4>🪔 Oli Ceremony</h4>
+
+        <p>
+          Graceful traditional rituals with the bride adorned beautifully.
+        </p>
+
+      </div>
+
+      <!-- FALDAN -->
+
+      <div class="timeline-card">
+
+        <img
+        src="https://media.tenor.com/NkK8dL4W8T8AAAAC/indian-family-wedding.gif"
+        style="
+        width:100%;
+        max-width:280px;
+        border-radius:20px;
+        margin-bottom:20px;
+        box-shadow:0 0 25px rgba(255,215,0,.3);
+        ">
+
+        <h4>🌸 Faldan Ceremony</h4>
+
+        <p>
+          Families gathering together with blessings, gifts and happiness.
+        </p>
+
+      </div>
+
+      <!-- ENGAGEMENT -->
+
+      <div class="timeline-card">
+
+        <img
+        src="https://media.tenor.com/0v4o5mB4x4AAAAAC/engagement-ring.gif"
+        style="
+        width:100%;
+        max-width:280px;
+        border-radius:20px;
+        margin-bottom:20px;
+        box-shadow:0 0 25px rgba(255,215,0,.3);
+        ">
+
+        <h4>💍 Engagement Ceremony</h4>
+
+        <p>
+          A magical moment as two souls exchange rings forever.
+        </p>
+
+      </div>
+
+      <!-- WEDDING -->
+
+      <div class="timeline-card">
+
+        <img
+        src="https://media.tenor.com/YuD7A8s8Q6AAAAAC/indian-marriage.gif"
+        style="
+        width:100%;
+        max-width:280px;
+        border-radius:20px;
+        margin-bottom:20px;
+        box-shadow:0 0 25px rgba(255,215,0,.3);
+        ">
+
+        <h4>❤️ Wedding Ceremony</h4>
+
+        <p>
+          Sacred vows, holy fire and the beginning of forever together.
         </p>
 
       </div>
@@ -940,301 +169,3 @@
   </div>
 
 </section>
-
-<!-- VENUE -->
-
-<section>
-
-  <div class="card">
-
-    <h2 class="section-title">
-      Venue
-    </h2>
-
-    <p style="font-size:1.3rem; line-height:2;">
-
-      Hotel Ram Saroj
-      <br>
-
-      Tilakgunj, Sagar (M.P.)
-
-    </p>
-
-    <a
-    class="btn"
-    target="_blank"
-
-    href="https://maps.google.com/?q=Hotel+Ram+Saroj+Tilakgunj+Sagar">
-
-      View Location 📍
-
-    </a>
-
-  </div>
-
-</section>
-
-<!-- BLESSINGS -->
-
-<section>
-
-  <div class="card">
-
-    <h2 class="section-title">
-      With Blessings
-    </h2>
-
-    <p style="
-    line-height:2.2;
-    font-style:italic;
-    font-size:1.2rem;
-    ">
-
-      “With the blessings of our families,
-      we invite you to join us in celebrating
-      love, laughter, and happily ever after.”
-
-    </p>
-
-  </div>
-
-</section>
-
-<!-- RSVP -->
-
-<section>
-
-  <div class="card">
-
-    <h2 class="section-title">
-      RSVP
-    </h2>
-
-    <p style="font-size:1.2rem;">
-      Your presence will make our celebration complete ❤️
-    </p>
-
-    <a
-    class="btn"
-
-    href="https://wa.me/917003981397"
-
-    target="_blank">
-
-      RSVP on WhatsApp
-
-    </a>
-
-  </div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-  <h2>
-    Thank You
-  </h2>
-
-  <p>
-    We look forward to celebrating with you ❤️
-  </p>
-
-</footer>
-
-</main>
-
-<script>
-
-/* PRELOADER */
-
-window.addEventListener("load",()=>{
-
-  setTimeout(()=>{
-
-    document
-    .getElementById("preloader")
-    .style.display="none";
-
-  },2000);
-
-});
-
-/* OPEN INVITATION */
-
-function openInvitation(){
-
-  document
-  .getElementById("curtainContainer")
-  .classList.add("open");
-
-  document
-  .getElementById("bgMusic")
-  .play();
-
-  setTimeout(()=>{
-
-    document
-    .getElementById("curtainContainer")
-    .style.display="none";
-
-  },3200);
-
-}
-
-/* PETALS */
-
-const petalsContainer=
-document.getElementById("petals");
-
-for(let i=0;i<50;i++){
-
-  let petal=
-  document.createElement("div");
-
-  petal.classList.add("petal");
-
-  petal.style.left=
-  Math.random()*100+"vw";
-
-  petal.style.animationDuration=
-  5+Math.random()*10+"s";
-
-  petal.style.opacity=
-  Math.random();
-
-  petalsContainer.appendChild(petal);
-
-}
-
-/* PARTICLES */
-
-const particleContainer=
-document.getElementById("particles");
-
-for(let i=0;i<70;i++){
-
-  let particle=
-  document.createElement("div");
-
-  particle.classList.add("particle");
-
-  particle.style.left=
-  Math.random()*100+"vw";
-
-  particle.style.top=
-  Math.random()*100+"vh";
-
-  particle.style.animationDuration=
-  2+Math.random()*6+"s";
-
-  particleContainer.appendChild(particle);
-
-}
-
-/* SPARKLES */
-
-for(let i=0;i<30;i++){
-
-  let s=
-  document.createElement("div");
-
-  s.classList.add("sparkle");
-
-  s.style.left=
-  Math.random()*100+"vw";
-
-  s.style.top=
-  Math.random()*100+"vh";
-
-  s.style.animationDelay=
-  Math.random()*4+"s";
-
-  document.body.appendChild(s);
-
-}
-
-/* COUNTDOWN */
-
-const weddingDate=
-new Date("July 11, 2026 00:00:00").getTime();
-
-setInterval(()=>{
-
-  const now=
-  new Date().getTime();
-
-  const gap=
-  weddingDate-now;
-
-  const day=
-  1000*60*60*24;
-
-  const hour=
-  1000*60*60;
-
-  const minute=
-  1000*60;
-
-  const days=
-  Math.floor(gap/day);
-
-  const hours=
-  Math.floor((gap%day)/hour);
-
-  const minutes=
-  Math.floor((gap%hour)/minute);
-
-  const seconds=
-  Math.floor((gap%minute)/1000);
-
-  document
-  .getElementById("days")
-  .innerText=days;
-
-  document
-  .getElementById("hours")
-  .innerText=hours;
-
-  document
-  .getElementById("minutes")
-  .innerText=minutes;
-
-  document
-  .getElementById("seconds")
-  .innerText=seconds;
-
-},1000);
-
-/* MUSIC BUTTON */
-
-const music=
-document.getElementById("bgMusic");
-
-const musicBtn=
-document.getElementById("musicBtn");
-
-musicBtn.addEventListener("click",()=>{
-
-  if(music.paused){
-
-    music.play();
-
-    musicBtn.innerHTML="🔊";
-
-  }else{
-
-    music.pause();
-
-    musicBtn.innerHTML="🔇";
-
-  }
-
-});
-
-</script>
-
-</body>
-</html>
-```
