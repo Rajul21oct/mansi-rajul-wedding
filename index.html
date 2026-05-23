@@ -19,47 +19,47 @@
       scroll-behavior:smooth;
     }
 
-    :root{
-      --accent:#d4956b;
-      --accent-light:#e8b99a;
-      --accent-bright:#f0c9b8;
-      --red:#7a0000;
-      --pink:#ffb3d9;
-      --cream:#fff5e8;
-    }
+:root{
 
-    body{
-      font-family:'Montserrat',sans-serif;
-      overflow-x:hidden;
-      color:white;
-      background:black;
-    }
+  --accent:#0f2f46;
+  --accent-light:#123d59;
+  --accent-bright:#1d567a;
 
-    /* BACKGROUND */
+  --text-main:#062033;
+  --text-soft:#103852;
+  --card-bg:rgba(255,255,255,.58);
 
-    body::before{
+}
 
-      content:"";
+body{
+  font-family:'Montserrat',sans-serif;
+  overflow-x:hidden;
+  color:var(--text-main);
+  background:#b8e3ff;
+}
+body::before{
 
-      position:fixed;
-      inset:0;
+  content:"";
 
-      background:
-      linear-gradient(
-      135deg,
-      rgba(10,5,5,.35),
-      rgba(30,10,10,.5)
-      ),
+  position:fixed;
+  inset:0;
 
-      url('https://images.unsplash.com/photo-1583886572454-1fe6229603b7?q=80&w=2070&auto=format&fit=crop')
-      center/cover;
+  background:
 
-      background-attachment:fixed;
+  linear-gradient(
+    rgba(255,255,255,.18),
+    rgba(255,255,255,.08)
+  ),
 
-      animation:bgFlow 35s infinite ease-in-out;
+  url('bg.png')
+  center/cover no-repeat;
 
-      z-index:-5;
-    }
+  background-attachment:fixed;
+
+  animation:bgFlow 35s infinite ease-in-out;
+
+  z-index:-5;
+}
 
     @keyframes bgFlow{
 
@@ -136,43 +136,56 @@
 
     }
 
-    .curtain{
+.curtain{
 
-      position:absolute;
+  position:absolute;
 
-      top:0;
+  top:0;
 
-      width:50%;
-      height:100%;
+  width:50%;
+  height:100%;
 
-      background:
-      repeating-linear-gradient(
-      90deg,
-      #2a0f0f 0px,
-      #3d1818 3px,
-      #4a2020 6px,
-      #3d1818 9px,
-      #2a0f0f 12px
-      ),
-      linear-gradient(
-      180deg,
-      #8b3a3a,
-      #5a2020,
-      #2a0f0f
-      );
+  background:
+  repeating-linear-gradient(
+  90deg,
+  #5c0000 0px,
+  #7a0000 4px,
+  #a30000 8px,
+  #7a0000 12px,
+  #5c0000 16px
+  ),
 
-      background-size:12px 100%, 100% 100%;
+  linear-gradient(
+  180deg,
+  #c1121f 0%,
+  #9d0208 30%,
+  #7a0000 60%,
+  #4a0000 100%
+  );
 
-      transition:4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background-size:
+  16px 100%,
+  100% 100%;
 
-      box-shadow:
-      inset 0 0 80px rgba(0,0,0,.95),
-      inset 8px 0 50px rgba(0,0,0,.8),
-      inset -8px 0 50px rgba(0,0,0,.6);
+  transition:
+  4.2s cubic-bezier(
+  0.22,
+  1,
+  0.36,
+  1
+  );
 
-      filter:drop-shadow(0 0 2px rgba(0,0,0,.5));
+  box-shadow:
+  inset 0 0 90px rgba(0,0,0,.85),
+  inset 8px 0 40px rgba(255,255,255,.05),
+  inset -8px 0 40px rgba(0,0,0,.4),
+  0 0 70px rgba(180,0,0,.25);
 
-    }
+  filter:
+  saturate(1.1)
+  brightness(1.05);
+
+}
 
     .curtain::before{
       content:"";
@@ -203,26 +216,15 @@
       pointer-events:none;
     }
 
-    .curtain.left{
-      left:0;
-      border-right:8px solid rgba(212,149,107,.5);
-      box-shadow:
-      inset 0 0 80px rgba(0,0,0,.95),
-      inset 8px 0 50px rgba(0,0,0,.8),
-      inset -8px 0 50px rgba(0,0,0,.6),
-      25px 0 80px rgba(212,149,107,.15);
-    }
+.curtain.left{
+  left:0;
+  border-right:8px solid rgba(255,180,180,.25);
+}
 
-    .curtain.right{
-      right:0;
-      border-left:8px solid rgba(212,149,107,.5);
-      box-shadow:
-      inset 0 0 80px rgba(0,0,0,.95),
-      inset -8px 0 50px rgba(0,0,0,.8),
-      inset 8px 0 50px rgba(0,0,0,.6),
-      -25px 0 80px rgba(212,149,107,.15);
-    }
-
+.curtain.right{
+  right:0;
+  border-left:8px solid rgba(255,180,180,.25);
+}
     .open .left{
       transform:translateX(-100%) skewX(-3deg);
       opacity:0;
@@ -251,26 +253,26 @@
 
     }
 
-    .intro-text h1{
+.intro-text h1{
 
-      font-family:'Playfair Display',serif;
+  font-family:'Playfair Display',serif;
 
-      font-size:5.5rem;
+  font-size:5.5rem;
 
-      font-weight:700;
+  font-weight:700;
 
-      color:var(--accent-light);
+  color:#f5d6b4;
 
-      text-shadow:
-      0 0 25px rgba(212,149,107,.8),
-      0 0 50px rgba(212,149,107,.5),
-      0 0 100px rgba(212,149,107,.3);
+  text-shadow:
+  0 0 25px rgba(255,220,180,.8),
+  0 0 50px rgba(255,180,120,.5),
+  0 0 100px rgba(255,120,80,.3);
 
-      animation:floatText 4s infinite ease-in-out;
+  animation:floatText 4s infinite ease-in-out;
 
-      letter-spacing:2px;
+  letter-spacing:2px;
 
-    }
+}
 
     @keyframes floatText{
 
@@ -280,55 +282,60 @@
 
     }
 
-    .intro-text p{
+.intro-text p{
 
-      margin-top:30px;
+  margin-top:30px;
 
-      max-width:700px;
+  max-width:700px;
 
-      line-height:2.2;
+  line-height:2.2;
 
-      font-size:1.3rem;
+  font-size:1.3rem;
 
-      font-weight:300;
+  font-weight:300;
 
-      letter-spacing:.8px;
+  letter-spacing:.8px;
 
-    }
+  color:#fff4ea;
 
-    .open-btn{
+  text-shadow:
+  0 0 10px rgba(0,0,0,.7);
 
-      margin-top:50px;
+}
 
-      padding:18px 48px;
+.open-btn{
 
-      border:none;
-      border-radius:50px;
+  margin-top:50px;
 
-      background:
-      linear-gradient(
-      to right,
-      var(--accent-light),
-      var(--accent-bright)
-      );
+  padding:18px 48px;
 
-      color:#6a0000;
+  border:none;
+  border-radius:50px;
 
-      font-weight:700;
+  background:
+  linear-gradient(
+  to right,
+  #f5d6b4,
+  #fff2df
+  );
 
-      font-size:1.1rem;
+  color:#7a0000;
 
-      cursor:pointer;
+  font-weight:700;
 
-      box-shadow:
-      0 0 40px rgba(212,149,107,.8),
-      0 8px 20px rgba(0,0,0,.5);
+  font-size:1.1rem;
 
-      transition:.4s;
+  cursor:pointer;
 
-      letter-spacing:.5px;
+  box-shadow:
+  0 0 40px rgba(255,220,180,.8),
+  0 8px 20px rgba(0,0,0,.5);
 
-    }
+  transition:.4s;
+
+  letter-spacing:.5px;
+
+}
 
     .open-btn:hover{
 
@@ -555,27 +562,30 @@
 
     /* HERO */
 
-    .hero h2{
+.hero h2{
 
-      font-family:'Playfair Display',serif;
+  font-family:'Cinzel',serif;
 
-      font-size:7.5rem;
+  font-size:5.2rem;
 
-      font-weight:700;
+  font-weight:700;
 
-      color:var(--accent-light);
+  color:#0b3552;
 
-      text-shadow:
-      0 0 30px rgba(212,149,107,.8),
-      0 0 60px rgba(212,149,107,.5),
-      0 0 120px rgba(212,149,107,.3);
+  letter-spacing:3px;
 
-      animation:
-      heroFloat 4s infinite ease-in-out;
+  text-transform:uppercase;
 
-      letter-spacing:2px;
+  white-space:nowrap;
 
-    }
+  text-shadow:
+  0 0 10px rgba(255,255,255,.7),
+  0 0 25px rgba(173,216,230,.6);
+
+  animation:
+  heroFloat 4s infinite ease-in-out;
+
+}
 
     @keyframes heroFloat{
 
@@ -585,19 +595,24 @@
 
     }
 
-    .hero p{
+.hero p{
 
-      margin-top:30px;
+  margin-top:30px;
 
-      font-size:1.5rem;
+  font-size:1.5rem;
 
-      max-width:800px;
+  max-width:800px;
 
-      font-weight:300;
+  font-weight:500;
 
-      letter-spacing:.5px;
+  color:#0c3550;
 
-    }
+  text-shadow:
+    0 0 8px rgba(255,255,255,.6);
+
+  letter-spacing:.5px;
+
+}
 
     /* COUNTDOWN */
 
@@ -659,27 +674,26 @@
 
     /* CARD */
 
-    .card{
+.card{
 
-      width:min(1000px,100%);
+  width:min(1000px,100%);
 
-      background:rgba(0,0,0,.3);
+  background:var(--card-bg);
 
-      border:2px solid rgba(212,149,107,.4);
+  border:2px solid rgba(255,255,255,.6);
 
-      border-radius:40px;
+  border-radius:40px;
 
-      padding:60px;
+  padding:60px;
 
-      backdrop-filter:none;
+  backdrop-filter:blur(10px);
 
-      box-shadow:
-      0 0 50px rgba(212,149,107,.15),
-      inset 0 0 30px rgba(255,255,255,.03);
+  box-shadow:
+  0 0 40px rgba(255,255,255,.25);
 
-      animation:fadeUp 1s ease;
+  animation:fadeUp 1s ease;
 
-    }
+}
 
     @keyframes fadeUp{
 
@@ -701,21 +715,21 @@
 
     }
 
-    .section-title{
+.section-title{
 
-      font-family:'Playfair Display',serif;
+  font-family:'Playfair Display',serif;
 
-      font-size:3.5rem;
+  font-size:3.5rem;
 
-      font-weight:700;
+  font-weight:700;
 
-      color:var(--accent);
+  color:#08263a;
 
-      margin-bottom:35px;
+  margin-bottom:35px;
 
-      letter-spacing:1px;
+  letter-spacing:1px;
 
-    }
+}
 
     /* FAMILY */
 
@@ -730,19 +744,21 @@
 
     }
 
-    .family-member{
+.family-member{
 
-      padding:45px;
+  padding:45px;
 
-      border-radius:30px;
+  border-radius:30px;
 
-      background:rgba(0,0,0,.3);
+  background:rgba(255,255,255,.45);
 
-      border:2px solid rgba(212,149,107,.3);
+  border:2px solid rgba(255,255,255,.6);
 
-      transition:.5s;
+  transition:.5s;
 
-    }
+  color:#08263a;
+
+}
 
     .family-member:hover{
 
@@ -868,7 +884,7 @@
       var(--accent-bright)
       );
 
-      color:#6a0000;
+      color:white;
 
       font-weight:700;
 
@@ -969,7 +985,7 @@
       var(--accent-bright)
       );
 
-      color:#6a0000;
+      color:white;
 
       font-weight:700;
 
@@ -1128,12 +1144,56 @@
 
     /* MOBILE */
 
+    .scroll-popup{
+
+  position:fixed;
+
+  bottom:30px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  background:
+  rgba(255,255,255,.75);
+
+  color:#08263a;
+
+  padding:14px 28px;
+
+  border-radius:50px;
+
+  font-weight:700;
+
+  letter-spacing:1px;
+
+  backdrop-filter:blur(10px);
+
+  box-shadow:
+  0 0 25px rgba(255,255,255,.4);
+
+  z-index:9999;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transition:.6s;
+
+}
+
+.scroll-popup.show{
+
+  opacity:1;
+
+  bottom:50px;
+
+}
+
     @media(max-width:768px){
 
-      .hero h2{
-        font-size:4.5rem;
-      }
-
+     .hero h2{
+  font-size:2.6rem;
+}
       .intro-text h1{
         font-size:3.5rem;
       }
@@ -1455,7 +1515,7 @@
       Hotel Ram Saroj
       <br>
 
-      Tilakgunj, Sagar (M.P.)
+      Tilakganj, Sagar (M.P.)
 
     </p>
 
@@ -1591,9 +1651,17 @@ window.addEventListener("load",()=>{
 
 function openInvitation(){
 
+  /* show page immediately */
+
+  document.body.style.overflowY = "auto";
+
+  /* start curtain animation */
+
   document
   .getElementById("curtainContainer")
   .classList.add("open");
+
+  /* remove curtains later */
 
   setTimeout(()=>{
 
@@ -1601,7 +1669,26 @@ function openInvitation(){
     .getElementById("curtainContainer")
     .style.display="none";
 
-  },3200);
+  },4000);
+
+  /* scroll popup */
+
+  setTimeout(()=>{
+
+    const popup =
+    document.getElementById(
+    "scrollPopup"
+    );
+
+    popup.classList.add("show");
+
+    setTimeout(()=>{
+
+      popup.classList.remove("show");
+
+    },5000);
+
+  },1200);
 
 }
 
@@ -1821,6 +1908,14 @@ function createExplosion(container){
 }
 
 </script>
+
+<div
+class="scroll-popup"
+id="scrollPopup">
+
+⬇ Scroll Down ⬇
+
+</div>
 
 </body>
 </html>
