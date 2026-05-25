@@ -282,6 +282,63 @@ body::before{
 
     }
 
+    /* GANESHA */
+
+    .ganesha-image{
+
+      margin-bottom:40px;
+
+      animation:ganesha-glow 2s infinite ease-in-out;
+
+    }
+
+    .ganesha-icon{
+
+      width:120px;
+      height:120px;
+
+      filter:drop-shadow(0 0 15px rgba(255,220,180,.8));
+
+      animation:ganesha-float 3s infinite ease-in-out;
+
+    }
+
+    .ganesha-text{
+
+      font-size:1.2rem;
+      font-weight:700;
+      color:#f5d6b4;
+      margin-top:15px;
+      letter-spacing:1px;
+      text-shadow:
+      0 0 20px rgba(255,220,180,.8);
+
+    }
+
+    @keyframes ganesha-float{
+
+      0%,100%{
+        transform:translateY(0);
+      }
+
+      50%{
+        transform:translateY(-15px);
+      }
+
+    }
+
+    @keyframes ganesha-glow{
+
+      0%,100%{
+        filter:brightness(1);
+      }
+
+      50%{
+        filter:brightness(1.2);
+      }
+
+    }
+
 .intro-text p{
 
   margin-top:30px;
@@ -865,6 +922,162 @@ body::before{
 
     }
 
+    /* SCHEDULE */
+
+    .schedule-container{
+
+      display:flex;
+
+      flex-direction:column;
+
+      gap:50px;
+
+      margin-top:30px;
+
+    }
+
+    .schedule-day{
+
+      background:rgba(0,0,0,.2);
+
+      border-radius:20px;
+
+      padding:30px;
+
+      border-left:6px solid var(--accent-light);
+
+    }
+
+    .schedule-date{
+
+      color:var(--accent-light);
+
+      font-size:2rem;
+
+      font-family:'Playfair Display',serif;
+
+      font-weight:700;
+
+      margin-bottom:25px;
+
+      text-align:center;
+
+    }
+
+    .schedule-item{
+
+      display:flex;
+
+      justify-content:space-between;
+
+      align-items:center;
+
+      padding:18px 25px;
+
+      margin-bottom:12px;
+
+      background:rgba(255,255,255,.08);
+
+      border-radius:15px;
+
+      transition:.4s;
+
+      border-left:4px solid transparent;
+
+    }
+
+    .schedule-item:hover{
+
+      background:rgba(255,255,255,.15);
+
+      border-left-color:var(--accent-light);
+
+      transform:translateX(8px);
+
+    }
+
+    .schedule-item .time{
+
+      font-weight:600;
+
+      color:var(--accent-bright);
+
+      font-size:1rem;
+
+      min-width:200px;
+
+      font-family:'Cinzel',serif;
+
+      letter-spacing:1px;
+
+    }
+
+    .schedule-item .event{
+
+      font-size:1.1rem;
+
+      font-weight:600;
+
+      color:white;
+
+      text-align:right;
+
+      flex:1;
+
+    }
+
+    .schedule-period{
+
+      font-size:1.3rem;
+
+      font-weight:700;
+
+      color:var(--accent-light);
+
+      margin-top:25px;
+
+      margin-bottom:15px;
+
+      padding:12px 20px;
+
+      background:rgba(29,86,122,.3);
+
+      border-radius:10px;
+
+      border-left:4px solid var(--accent-light);
+
+      font-family:'Playfair Display',serif;
+
+      letter-spacing:1px;
+
+    }
+
+    @media(max-width:768px){
+
+      .schedule-item{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:10px;
+
+      }
+
+      .schedule-item .time{
+
+        min-width:auto;
+
+      }
+
+      .schedule-item .event{
+
+        text-align:left;
+
+      }
+
+    }
+
     /* BUTTON */
 
     .btn{
@@ -1265,6 +1478,11 @@ body::before{
 
   <div class="intro-text">
 
+    <div class="ganesha-image">
+      <img src="ganesha.jpg" alt="Shri Ganesha" id="ganeshaImg" class="ganesha-icon" />
+      <p class="ganesha-text">🙏 Shri Ganeshay Namah 🙏</p>
+    </div>
+
     <h1>Rajul & Mansi</h1>
 
     <p>
@@ -1282,6 +1500,11 @@ body::before{
     </button>
 
   </div>
+
+  <!-- WEDDING SONG -->
+  <audio id="weddingSong" loop>
+    <source src="" type="audio/mpeg">
+  </audio>
 
 </div>
 
@@ -1337,7 +1560,7 @@ body::before{
 
     <p style="font-size:1.3rem; line-height:2;">
 
-      11 July 2026
+      <strong style="color: rgb(13, 0, 255);">11 July 2026</strong>
       <br><br>
 
       A magical beginning of forever awaits ✨
@@ -1366,10 +1589,13 @@ body::before{
 
         <p>
 
-          Son of
+         <b>Son of</b> 
           <br>
 
-          Mrs. Alka & Mr. Balkrishna
+         <b> Mrs. Alka & Mr. Balkrishna </b>
+          <br><br>
+
+         <b> <em style="color: rgb(255, 111, 0);">Grand son of late Shri Pooran Laal ji</em> </b>
 
         </p>
 
@@ -1381,10 +1607,13 @@ body::before{
 
         <p>
 
-          Daughter of
+         <b>Daughter of</b>
           <br>
 
-          Mrs. Manisha & Mr. Arvind
+         <b> Mrs. Manisha & Mr. Arvind </b>
+          <br><br>
+
+        <b>  <em style="color: rgb(255, 111, 0);">Grand daughter of late Shri Dashrath ji</em></b>
 
         </p>
 
@@ -1448,7 +1677,7 @@ body::before{
       <!-- 11 JULY -->
 
       <h3 class="timeline-date">
-        ✨ 11 July 2026 ✨
+        ✨ <strong>11 July 2026</strong> ✨
       </h3>
 
       <div class="timeline-card">
@@ -1488,6 +1717,147 @@ body::before{
         <p>
           Sacred vows, holy fire and the beginning of forever together.
         </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SCHEDULE & TIMINGS -->
+
+<section>
+
+  <div class="card">
+
+    <h2 class="section-title">
+      Schedule & Timings
+    </h2>
+
+    <div class="schedule-container">
+
+      <!-- 10 JULY -->
+
+      <div class="schedule-day">
+
+        <h3 class="schedule-date">📅 10 July 2026</h3>
+
+        <div class="schedule-period">🌅 Morning</div>
+        <div class="schedule-item">
+          <span class="time">7:30 AM - 8:30 AM</span>
+          <span class="event">🙏 Mata Poojan</span>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">8:30 AM - 9:00 AM</span>
+          <span class="event">💧 Mehar Ka Paani</span>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">10:00 AM - 12:00 PM</span>
+          <span class="event">🏛️ Mandap Ceremony</span>
+        </div>
+
+        <div class="schedule-period">☀️ Afternoon</div>
+        <div class="schedule-item">
+          <span class="time">1:00 PM - 3:00 PM</span>
+          <span class="event">🍽️ Lunch</span>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">4:00 PM - 5:00 PM</span>
+          <span class="event">🌸 Flower Shower Haldi</span>
+        </div>
+
+        <div class="schedule-period">🌆 Evening & Night</div>
+        <div class="schedule-item">
+          <span class="time">7:00 PM - 11:00 PM</span>
+          <span class="event">🎶 Sangeet Night</span>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">9:00 PM Onwards</span>
+          <span class="event">🍽️ Dinner</span>
+        </div>
+
+      </div>
+
+      <!-- 11 JULY -->
+
+      <div class="schedule-day">
+
+        <h3 class="schedule-date">📅 11 July 2026</h3>
+
+        <div class="schedule-period">🌅 Morning</div>
+        <div class="schedule-item">
+          <span class="time">11:00 AM - 12:00 PM</span>
+          <span class="event">🪔 Oli Ceremony</span>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">12:00 PM - 1:00 PM</span>
+          <span class="event">🎁 Faldaan</span>
+        </div>
+
+        <div class="schedule-period">☀️ Afternoon</div>
+        <div class="schedule-item">
+          <span class="time">1:00 PM - 3:00 PM</span>
+          <span class="event">🍽️ Lunch</span>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">3:00 PM - 7:00 PM</span>
+          <span class="event">😴 Rest & Get Ready</span>
+        </div>
+
+        <div class="schedule-period">🌆 Evening</div>
+        <div class="schedule-item">
+          <span class="time">7:00 PM</span>
+          <span class="event">🐎 Baraat</span>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">7:00 PM - 12:00 AM</span>
+          <span class="event">🍽️ Dinner</span>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">9:00 PM</span>
+          <span class="event">💍 Engagement & Reception</span>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">9:00 PM - 10:00 PM</span>
+          <span class="event">📸 Photo Session</span>
+        </div>
+
+        <div class="schedule-period">🌙 Midnight</div>
+        <div class="schedule-item">
+          <span class="time">12:00 AM - 4:00 AM</span>
+          <span class="event">💒 Kanya Daan & Wedding Ceremony</span>
+        </div>
+
+        <div class="schedule-period">🌅 Morning</div>
+        <div class="schedule-item">
+          <span class="time">6:00 AM</span>
+          <span class="event">👰 Vidaai</span>
+        </div>
+
+      </div>
+
+      <!-- 12 JULY -->
+
+      <div class="schedule-day">
+
+        <h3 class="schedule-date">📅 12 July 2026</h3>
+
+        <div class="schedule-period">🌅 Morning</div>
+        <div class="schedule-item">
+          <span class="time">9:00 AM - 10:00 AM</span>
+          <span class="event">🏨 Hotel Checkout & Breakfast</span>
+        </div>
 
       </div>
 
@@ -1654,6 +2024,13 @@ function openInvitation(){
   /* show page immediately */
 
   document.body.style.overflowY = "auto";
+
+  /* play wedding song */
+
+  const weddingSong = document.getElementById("weddingSong");
+  if(weddingSong && weddingSong.src){
+    weddingSong.play().catch(err => console.log("Audio play failed: ", err));
+  }
 
   /* start curtain animation */
 
