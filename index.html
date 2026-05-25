@@ -21,12 +21,12 @@
 
 :root{
 
-  --accent:#0f2f46;
-  --accent-light:#123d59;
-  --accent-bright:#1d567a;
+  --accent:#7a0707;
+  --accent-light:#ad1212;
+  --accent-bright:#d12f2f;
 
-  --text-main:#062033;
-  --text-soft:#103852;
+  --text-main:#7a0707;
+  --text-soft:#7f1d1d;
   --card-bg:rgba(255,255,255,.58);
 
 }
@@ -655,7 +655,7 @@ body::before{
 
   font-weight:700;
 
-  color:#0b3552;
+  color:#7a0707;
 
   letter-spacing:3px;
 
@@ -690,7 +690,7 @@ body::before{
 
   font-weight:500;
 
-  color:#0c3550;
+  color:#900c0c;
 
   text-shadow:
     0 0 8px rgba(255,255,255,.6);
@@ -2061,6 +2061,7 @@ function openInvitation(){
 
   const weddingSong = document.getElementById("weddingSong");
   if(weddingSong){
+    weddingSong.volume = 0.1;
     weddingSong.play().catch(err => console.log("Audio autoplay blocked - browser policy: ", err));
     
     /* Try to unmute after user interaction */
@@ -2068,6 +2069,7 @@ function openInvitation(){
       if(weddingSong.muted){
         weddingSong.muted = false;
       }
+      weddingSong.volume = 0.1;
     }, { once: true });
   }
 
@@ -2327,9 +2329,13 @@ function createExplosion(container){
 
 const musicToggle = document.getElementById('musicToggle');
 const weddingSongAudio = document.getElementById('weddingSong');
+if (weddingSongAudio) {
+  weddingSongAudio.volume = 0.1;
+}
 
 musicToggle.addEventListener('click', () => {
   if(weddingSongAudio.paused){
+    weddingSongAudio.volume = 0.1;
     weddingSongAudio.play().catch(err => console.log("Play failed: ", err));
     weddingSongAudio.muted = false;
     musicToggle.textContent = '🔊';
