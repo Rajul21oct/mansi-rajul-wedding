@@ -441,6 +441,34 @@ body::before{
 
     }
 
+    /* MUSIC TOGGLE */
+
+    .music-toggle{
+      position:fixed;
+      top:20px;
+      right:20px;
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      background:rgba(212,149,107,.8);
+      border:2px solid rgba(212,149,107,1);
+      color:white;
+      font-size:1.8rem;
+      cursor:pointer;
+      z-index:999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:.3s;
+      box-shadow:0 0 30px rgba(212,149,107,.4);
+    }
+
+    .music-toggle:hover{
+      background:rgba(212,149,107,1);
+      transform:scale(1.1);
+      box-shadow:0 0 40px rgba(212,149,107,.6);
+    }
+
     /* ROSE PETALS */
 
     .petals{
@@ -1456,6 +1484,10 @@ body::before{
   R ❤️ M
 </div>
 
+<!-- MUSIC TOGGLE -->
+
+<button class="music-toggle" id="musicToggle" title="Toggle Music">🎵</button>
+
 <!-- PETALS -->
 
 <div class="petals" id="petals"></div>
@@ -1502,7 +1534,7 @@ body::before{
   </div>
 
   <!-- WEDDING SONG -->
-  <audio id="weddingSong" loop>
+  <audio id="weddingSong" loop autoplay muted>
     <source src="ganesha.mp3" type="audio/mpeg">
   </audio>
 
@@ -2028,8 +2060,15 @@ function openInvitation(){
   /* play wedding song */
 
   const weddingSong = document.getElementById("weddingSong");
-  if(weddingSong && weddingSong.src){
-    weddingSong.play().catch(err => console.log("Audio play failed: ", err));
+  if(weddingSong){
+    weddingSong.play().catch(err => console.log("Audio autoplay blocked - browser policy: ", err));
+    
+    /* Try to unmute after user interaction */
+    document.addEventListener('click', () => {
+      if(weddingSong.muted){
+        weddingSong.muted = false;
+      }
+    }, { once: true });
   }
 
   /* start curtain animation */
@@ -2283,6 +2322,24 @@ function createExplosion(container){
   }
 
 }
+
+/* MUSIC TOGGLE */
+
+const musicToggle = document.getElementById('musicToggle');
+const weddingSongAudio = document.getElementById('weddingSong');
+
+musicToggle.addEventListener('click', () => {
+  if(weddingSongAudio.paused){
+    weddingSongAudio.play().catch(err => console.log("Play failed: ", err));
+    weddingSongAudio.muted = false;
+    musicToggle.textContent = '🔊';
+    musicToggle.style.background = 'rgba(212,149,107,1)';
+  } else {
+    weddingSongAudio.pause();
+    musicToggle.textContent = '🔇';
+    musicToggle.style.background = 'rgba(212,149,107,.5)';
+  }
+});
 
 </script>
 
